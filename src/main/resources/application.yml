@@ -1,8 +1,17 @@
+server:
+  port: 8070
 spring:
   application:
     name: "eurekaserver"
   config:
     import: "optional:configserver:http://localhost:8071/"
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false # Eureka Server does not register itself
+    fetch-registry: false # No need to fetch registry in a standalone server
 
 management:
   endpoints:
