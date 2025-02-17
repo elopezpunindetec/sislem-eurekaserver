@@ -2,6 +2,7 @@ plugins {
     java
     id("org.springframework.boot") version "3.4.2"
     id("io.spring.dependency-management") version "1.1.7"
+    id("com.google.cloud.tools.jib") version "3.4.2"
 }
 
 group = "com.sislem"
@@ -41,7 +42,8 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-tasks.bootBuildImage {
-    imageName.set("sislem/eurekaserver:${project.version}")
+jib {
+    to {
+        image = "sislem/${project.name}:${project.version}"
+    }
 }
-
